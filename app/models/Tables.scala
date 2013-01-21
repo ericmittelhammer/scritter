@@ -18,6 +18,7 @@ trait Tables {
 		def email = column[String]("email")
 		def passwordHash = column[String]("password_hash")
 		def * = id.? ~ username ~ email ~ passwordHash <> (User, User.unapply _)
+		def autoInc = id.? ~ username ~ email ~ passwordHash <> (User, User.unapply _) returning id
 	}
 
 	object Followers extends Table[(Int, Int)]("followers") {
