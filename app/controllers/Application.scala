@@ -2,14 +2,16 @@ package controllers
 
 import play.api._
 import play.api.mvc._
+import play.api.Play.current
 
 import models.User
 import models.AnonymousUser
-import global.Global
+
+import services.UserServiceProvider
 
 object Application extends Controller {
 
-	def userService = Global.userService
+	def userService = current.plugin(classOf[UserServiceProvider]).get.userService
 
 	def withUser(f: User => Request[AnyContent] => Result) = {
 	  Action { request =>
@@ -20,8 +22,8 @@ object Application extends Controller {
 		}
 	}
 
-  def index = Action {
-    Ok(views.html.index("Your new application is ready."))
+  def index = withUser { user => request =>
+    Ok(views.html.index(user))
   }
   
 }

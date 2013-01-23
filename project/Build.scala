@@ -12,7 +12,8 @@ object ApplicationBuild extends Build {
     jdbc,
     "com.typesafe" %% "slick" % "1.0.0-RC1",
     "org.slf4j" % "slf4j-nop" % "1.6.4",
-    "org.specs2" %% "specs2" % "1.13" % "test"
+    "org.specs2" %% "specs2" % "1.13" % "test",
+    "org.mockito" % "mockito-all" % "1.9.0"
   )
 
 
