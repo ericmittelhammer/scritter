@@ -1,5 +1,13 @@
-@(user: User)
+@(user: User, registrationForm:Form[(String, String, String, String)])
+
+
 
 @main(title="Welcome") {
-	<p>User name: @user.username</p>
+<!-- User name: @user.username -->
+
+	<form action="#">
+			<input type="text" name="username" default="Username"/>
+			<input type="password" name="password" default="Password"/>
+	</form>
+
 }
